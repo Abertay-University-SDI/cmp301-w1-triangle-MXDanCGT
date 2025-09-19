@@ -46,7 +46,5 @@ OutputType main(InputType input)
 
     output.tex = input.tex;
 	
-
-
 	return output;
 }
