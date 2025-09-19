@@ -4,15 +4,14 @@
 struct InputType
 {
 	float4 position : SV_POSITION;
-	float4 colour : COLOR;
+    float2 tex : TEXCOORD0;
 }; 
-
 
 float4 main(InputType input) : SV_TARGET
 {
-	//return input.colour;
-	//Temp change - make it red tinge
-    return input.colour * float4(1.f, 0.5f, 0.5f, 0.5f);
-	//Shouldnt we be able to see this stepping through the shaders?
+    //Turn the UVs into a black -> white gradient...
+    const float Mag = sqrt((input.tex[0] * input.tex[0]) + (input.tex[1] * input.tex[1]));
+   // const float Mag = 1.f;
+   return float4(Mag, Mag, Mag, 1.f);
 
 }
